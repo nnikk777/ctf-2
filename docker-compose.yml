@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:8.0
+    command: 
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: ctfdb
+      MYSQL_USER: ctfuser
+      MYSQL_PASSWORD: ctfpass
+    networks:
+      - ctf-net
+
+  web:
+    build: ./web
+    ports:
+      - "5000:5000"
+    environment:
+      DB_HOST: db
+      DB_USER: ctfuser
+      DB_PASSWORD: ctfpass
+      DB_NAME: ctfdb
+    depends_on:
+      - db
+    networks:
+      - ctf-net
+
+volumes:
+  db_data:
+
+networks:
+  ctf-net:
