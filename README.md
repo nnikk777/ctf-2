@@ -32,7 +32,7 @@ SQL Injection — это уязвимость, которая возникает
 Команды для запуска
 Клонируйте репозиторий:
 
-    git clone https://github.com/nnikk777/ctf-2
+    git clone https://github.com/nnikk777/ctf-2.git
 
 Запустите докер: 
 
