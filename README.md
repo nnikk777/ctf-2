@@ -33,7 +33,7 @@ SQL Injection — это уязвимость, которая возникает
 Клонируйте репозиторий:
 
     git clone https://github.com/nnikk777/ctf-2
-    cd sqli-ctf
+
 Запустите докер: 
 
     docker-compose up --build
